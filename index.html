@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Webpage</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    body {
+      padding: 0 15px;
+      background-color: black;
+      color: white;
+    }
+
+    .header-bg {
+      background-color: black;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .header-bg h1 {
+      margin-bottom: 5px;
+      font-size: 4rem;
+    }
+
+    .navbar-custom {
+      background-color: black;
+    }
+
+    .navbar-custom .navbar-toggler-icon {
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="white" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+    }
+
+    .navbar-custom .navbar-toggler {
+      border-color: white;
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+      color: white !important;
+    }
+
+    .navbar-custom .nav-link {
+      font-size: 1.2rem;
+    }
+
+    .main-content {
+      padding: 20px 0;
+    }
+
+    #about h2,
+    #contact h2 {
+      margin-top: 40px;
+    }
+
+    footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+    }
+
+    #merch {
+      background-color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    #about {
+      background-color: white;
+      padding: 20px 0;
+      color: #333;
+    }
+
+    #about h2 {
+      color: #000;
+    }
+
+    .about-section {
+      background-color: #f8f9fa;
+      padding: 40px 0;
+    }
+
+    .about-section h3 {
+      color: #000;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .about-section p {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .about-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .about-col {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .about-col h3 {
+      text-align: center;
+    }
+
+    .about-col p {
+      text-align: justify;
+    }
+
+    .about-col img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin: 0 auto 10px;
+      display: block;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .about-col img:hover {
+      opacity: 1;
+    }
+
+    #contact-us {
+      background-color: black;
+      padding: 60px 0;
+      color: white !important; /* Force white text for the Contact Us section */
+    }
+
+    #contact-us h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white !important; /* Ensure white text for heading */
+    }
+
+    #contact-us p {
+      font-size: 1.1rem;
+      color: white !important; /* Force white text for paragraph */
+    }
+
+    #contact-us .btn {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: #6d6d6d;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #contact-us .btn:hover {
+      background-color: #0056b3;
+    }
+
+    #suggestions h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    #suggestions p {
+      font-size: 1.1rem;
+      color: #bbb;
+      margin-bottom: 30px;
+    }
+
+    #suggestions .form-control {
+      font-size: 1rem;
+      padding: 10px;
+      margin-bottom: 20px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 5px;
+    }
+
+    #contact-suggestions {
+      background-color: #d1d1d1; /* Light gray background */
+      width: 100%;
+      padding-top: 50px; /* Added padding on top */
+      padding-bottom: 60px;
+    }
+
+    #contact-suggestions h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333; /* Darker text for contrast */
+    }
+
+    #contact-suggestions p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    #contact-suggestions .btn {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background-color: #5e5e5e;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #contact-suggestions .btn:hover {
+      background-color: #7d7d7d;
+    }
+
+    @media (max-width: 768px) {
+      .about-row {
+        flex-direction: column;
+      }
+
+      .about-col {
+        margin-bottom: 20px;
+      }
+
+      .container-custom {
+        display: block;
+        padding: 10px;
+      }
+
+      /* Add styles for Pop-Up Shops section */
+      #contact-us .col-md-6 {
+        padding: 15px;  /* Padding for the columns */
+      }
+
+      #contact-us h2, #contact-us h3 {
+        margin-bottom: 15px;
+      }
+
+      #contact-us .list-unstyled {
+        padding-left: 0;  /* Remove default padding */
+        list-style: none; /* Remove bullet points */
+      }
+
+      #contact-us .list-unstyled li {
+        margin-bottom: 10px; /* Add space between list items */
+      }
+
+      @media (max-width: 768px) {
+        /* Adjust layout for small screens */
+        #contact-us .col-md-6 {
+          margin-bottom: 20px; /* Add spacing between columns on small screens */
+        }
+
+        /* Adjust Pop-Up Shops section for small screens */
+        #contact-us h2, #contact-us p {
+          font-size: 1rem; /* Adjust font size for smaller screens */
+        }
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9178a78e-0e0b-42c7-97a5-ef4c33e4faee/d4we5kt-121d9209-9b32-43aa-8b4b-e3ed5bef4340.png/v1/fill/w_900,h_617/finn_head_by_aquaseashells_d4we5kt-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjE3IiwicGF0aCI6IlwvZlwvOTE3OGE3OGUtMGUwYi00MmM3LTk3YTUtZWY0YzMzZTRmYWVlXC9kNHdlNWt0LTEyMWQ5MjA5LTliMzItNDNhYS04YjRiLWUzZWQ1YmVmNDM0MC5wbmciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.oVsKK2Feha_QoRpUVZOYzy3gSMsDG2eiOIBj-UEjqVI" alt="Logo" width="80">
+        Cartoon Network
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#merch">Merch</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact-us">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <div class="header-bg">
+    <h1>Adventure Time</h1>
+    <p>Check out our limited edition releases</p>
+  </div>
+
+<!-- Cards Section -->
+<section id="merch">
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      
+      <!-- First Card -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.media.amplience.net/i/hottopic/30646758_av1?$productMainDesktop$&fmt=auto" class="card-img-top" alt="...">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Adventure Time Figural Finn Cuff Beanie</h5>
+            <p class="card-text">Gear up for your next adventure with this Adventure Time-inspired beanie! With 3D ears just like Finn's hat, this beanie includes a tag of Finn sitting down on the tacked cuff, perfect for fans of the series.</p>
+            <div class="text-center mt-auto">
+              <a href="#" class="btn btn-info text-white">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Card -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.media.amplience.net/s/hottopic/32081308_hi?$productMainDesktop$&fmt=auto" class="card-img-top" alt="...">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Adventure Time Finn & Jake Portrait Crewneck - BoxLunch Exclusive</h5>
+            <p class="card-text">Adventure in style with this Adventure Time sweatshirt! Featuring a printed design of Finn and Jake between embroidered "Adventure Time" and "Come Along With Me" lettering, this crewneck is perfect for fans of the cartoon.</p>
+            <div class="text-center mt-auto">
+              <a href="#" class="btn btn-info text-white">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Card -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="https://cdn.media.amplience.net/s/hottopic/32547977_hi?$productMainDesktop$&fmt=auto" class="card-img-top" alt="...">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h5 class="card-title">Adventure Time Flap Raglan Baby Tee</h5>
+            <p class="card-text">Add some undead flair to your look with this Adventure Time tee! Featuring a portrait of Marceline beneath "Marceline the Vampire Queen" lettering, this slightly cropped shirt includes raglan style sleeves, perfect for fans of the series.</p>
+            <div class="text-center mt-auto">
+              <a href="#" class="btn btn-info text-white">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- About Us Section -->
+  <section id="about">
+    <div class="container about-row">
+      <div class="about-col">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRDgyGgeRZhqTZq74Nc3tRvPmYSubwMP1B9Q&s" alt="People">
+        <h3>About Us</h3>
+        <p>We are a dedicated team of creatives and passionate fans, committed to bringing the best of the Adventure Time universe to the world. Our crew is made up of artists, designers, marketers, and customer service experts, all working together to deliver high-quality products that celebrate the magic of Adventure Time.</p>
+      </div>
+      <div class="about-col">
+        <img src="https://cdn1.iconfinder.com/data/icons/internet-28/48/68-512.png" alt="Reach">
+        <h3>About Our Reach</h3>
+        <p>We pride ourselves on our ability to deliver Adventure Time merchandise worldwide. With our streamlined logistics and trusted shipping partners, we provide fast and reliable delivery to almost every corner of the globe. Whether you're in North America, Europe, or Asia, we ensure that Adventure Time treasures arrive safely at your doorstep.</p>
+      </div>
+      <div class="about-col">
+        <img src="https://cdn-icons-png.flaticon.com/512/1657/1657671.png" alt="People">
+        <h3>About Our Goal</h3>
+        <p>Our goal is simple: to bring the joy, humor, and heart of Adventure Time to fans everywhere. Whether you're looking for exclusive merch or simply want to be reminded of the wild world of Ooo, we're here to help you bring a piece of the show into your life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- We'd Love to Hear From You Section -->
+  <section id="contact-suggestions" class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <h2>We'd Love to Hear From You</h2>
+        <p>Your feedback and questions are always welcome. Click the button below to start a conversation!</p>
+        <a href="mailto:support@cartoonnetwork.com" class="btn btn-primary">Talk with Us</a>
+      </div>
+    </div>
+  </section>
+
+<!-- Contact Us, Pop-Up Shops, Follow Us, and Suggestions Section -->
+<section id="contact-us">
+  <div class="container mt-5">
+    <div class="row text-center justify-content-center d-flex align-items-stretch">
+
+      <!-- Contact Us Column (1st) -->
+      <div class="col-12 col-md-3 mb-4">
+        <div class="border p-3 rounded shadow-sm d-flex flex-column justify-content-between">
+          <h3 class="mb-3">Contact Us</h3>
+          <p><strong>Email:</strong> support@example.com</p>
+          <p><strong>Phone:</strong> 123-456-7890</p>
+        </div>
+      </div>
+
+      <!-- Pop-Up Shops Column (2nd) -->
+      <div class="col-12 col-md-3 mb-4">
+        <div class="border p-3 rounded shadow-sm d-flex flex-column justify-content-between">
+          <h3 class="mb-3">Pop-Up Shops</h3>
+          <p>Check out our upcoming pop-up shops in your area.</p>
+          <button class="btn btn-info text-white w-100 mt-auto">Learn More</button>
+        </div>
+      </div>
+
+      <!-- Follow Us Column (3rd) -->
+      <div class="col-12 col-md-3 mb-4">
+        <div class="border p-3 rounded shadow-sm">
+          <h3 class="mb-3">Follow Us</h3>
+          <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+            <div class="p-2">
+              <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/instagram-white-icon.png" alt="Instagram" width="35" height="35">
+            </div>
+            <div class="p-2">
+              <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-app-round-white-icon.png" alt="Facebook" width="40" height="40">
+            </div>
+            <div class="p-2">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTncNdsURrHCorSeR9usPvHN_6XPQp3toe3tA&s" alt="Email" width="40" height="40">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggestions Column (4th) -->
+      <div class="col-12 col-md-3 mb-4">
+        <div class="border p-3 rounded shadow-sm d-flex flex-column justify-content-between">
+          <h3 class="mb-3">Suggestions</h3>
+          <p>We value your input! Share your thoughts below:</p>
+          <form action="#" method="post">
+            <textarea class="form-control mb-3" rows="5" placeholder="Write your suggestion here..."></textarea>
+            <button type="submit" class="btn btn-info text-white w-100 mt-auto">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bootstrap Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
